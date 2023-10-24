@@ -19,6 +19,16 @@ RESET  := $(shell tput -Txterm sgr0    2>/dev/null)
 
 default: help
 
+## Develop:
+run:  ## Just start the server (with no live-reloading)
+	go run .
+
+run-livereload: ## Run server with live-reloading
+ifeq (, $(shell which air 2>/dev/null))
+	go install github.com/cosmtrek/air@latest
+endif
+	air
+
 ## Build:
 build: ## Build your project and put the output binary in build/
 	$(GOCMD) build -ldflags "-s -w -X 'main.version=$(VERSION)' -X 'main.commit=$(COMMIT)' -X 'main.dateStr=$(DATEUTC)'" -o build/$(BINARY) .
