@@ -7,12 +7,12 @@ import (
 	"github.com/tcarreira/roaw2023/config"
 )
 
-func RegisterRoutes(e *echo.Echo, group string) {
-	HandleGroupWithConfigs(e, group, config.GetConfigs())
+func RegisterRoutes(e *echo.Echo, path string) {
+	HandleGroupWithConfigs(e, path, config.GetConfigs())
 }
 
-func HandleGroupWithConfigs(e *echo.Echo, group string, conf *config.Config) {
-	g := e.Group(group)
+func HandleGroupWithConfigs(e *echo.Echo, path string, conf *config.Config) {
+	g := e.Group(path)
 	g.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, from roaw!")
 	})
