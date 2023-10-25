@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"os"
 
-	"net/http"
-
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/tcarreira/roaw2023/api"
+	"github.com/tcarreira/roaw2023/config"
+	"github.com/tcarreira/roaw2023/web/website"
 )
 
 var (
@@ -19,12 +20,16 @@ var (
 
 func main() {
 	fmt.Println("Starting Roaw - Run Once A Week")
+	config.SetupGlobalConfig(config.Config{
+		Version: version,
+		Commit:  commit,
+		DateStr: dateStr,
+	})
 
-	verInfo := fmt.Sprintf("roaw version: %s (%s - %s)\n", version, commit, dateStr)
 	flagVersion := flag.Bool("version", false, "Print version information and quit")
 	flag.Parse()
 	if *flagVersion {
-		fmt.Println(verInfo)
+		fmt.Println(config.GetConfigs().GetVersionString())
 		os.Exit(0)
 	}
 
@@ -35,12 +40,8 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, from roaw!")
-	})
-	e.GET("/version", func(c echo.Context) error {
-		return c.String(http.StatusOK, verInfo)
-	})
+	website.RegisterRoutes(e, "")
+	api.RegisterRoutes(e, "/api")
 
 	port := os.Getenv("PORT")
 	if port == "" {
