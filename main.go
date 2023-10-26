@@ -7,9 +7,9 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/tcarreira/roaw2023/api"
-	"github.com/tcarreira/roaw2023/config"
-	"github.com/tcarreira/roaw2023/web/website"
+	"github.com/tcarreira/roaw/api"
+	"github.com/tcarreira/roaw/config"
+	"github.com/tcarreira/roaw/web/website"
 )
 
 var (

@@ -1,4 +1,4 @@
-module github.com/tcarreira/roaw2023
+module github.com/tcarreira/roaw
 
 go 1.21.0
 

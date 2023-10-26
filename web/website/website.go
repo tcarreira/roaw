@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/tcarreira/roaw2023/config"
+	"github.com/tcarreira/roaw/config"
 )
 
 func RegisterRoutes(e *echo.Echo, path string) {
