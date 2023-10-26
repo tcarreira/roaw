@@ -20,10 +20,14 @@ var (
 
 func main() {
 	fmt.Println("Starting Roaw - Run Once A Week")
+
 	config.SetupGlobalConfig(config.Config{
-		Version: version,
-		Commit:  commit,
-		DateStr: dateStr,
+		Version: config.Version{
+			Version: version,
+			Commit:  commit,
+			DateStr: dateStr,
+		},
+		Db: config.NewDB("sqlite", ":memory:"),
 	})
 
 	flagVersion := flag.Bool("version", false, "Print version information and quit")

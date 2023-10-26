@@ -1,13 +1,22 @@
 package config
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/jmoiron/sqlx"
+)
 
 var gConfig *Config
 
-type Config struct {
+type Version struct {
 	Version string
 	Commit  string
 	DateStr string
+}
+
+type Config struct {
+	Version Version
+	Db      *sqlx.DB
 }
 
 func SetupGlobalConfig(c Config) {
@@ -15,8 +24,13 @@ func SetupGlobalConfig(c Config) {
 }
 
 func defaultGlobalConfig() Config {
+	db, err := sqlx.Connect("sqlite", ":memory")
+	if err != nil {
+		panic("cannot create a sqlite :memory")
+	}
 	return Config{
-		Version: "test",
+		Version: Version{"test", "", ""},
+		Db:      db,
 	}
 }
 
@@ -28,8 +42,8 @@ func GetConfigs() *Config {
 }
 
 func (c *Config) GetVersionString() string {
-	if c.Commit == "" && c.DateStr == "" {
-		return fmt.Sprintf("roaw version: %s", c.Version)
+	if c.Version.Commit == "" && c.Version.DateStr == "" {
+		return fmt.Sprintf("roaw version: %s", c.Version.Version)
 	}
-	return fmt.Sprintf("roaw version: %s (%s - %s)", c.Version, c.Commit, c.DateStr)
+	return fmt.Sprintf("roaw version: %s (%s - %s)", c.Version.Version, c.Version.Commit, c.Version.DateStr)
 }
