@@ -1,12 +1,12 @@
 package config
 
 import (
+	"fmt"
 	"time"
 
 	"log/slog"
 
 	"github.com/jmoiron/sqlx"
-	_ "modernc.org/sqlite"
 )
 
 func NewDB(dbType, connStr string) *sqlx.DB {
@@ -20,7 +20,7 @@ func NewDB(dbType, connStr string) *sqlx.DB {
 			if db, err := sqlx.Connect(dbType, connStr); err == nil {
 				resultChan <- db
 			}
-			slog.Warn("Could not connect to database (%s:%s). Retrying...", dbType, connStr)
+			slog.Warn(fmt.Sprintf("Could not connect to database (%s:%s). Retrying...", dbType, connStr))
 			time.Sleep(500 * time.Millisecond)
 		}
 	}()

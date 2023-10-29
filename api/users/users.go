@@ -2,8 +2,13 @@ package users
 
 import (
 	"net/http"
+	"time"
 
+	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
+	"github.com/tcarreira/roaw/config"
+	"github.com/tcarreira/roaw/internal/db"
+	"github.com/tcarreira/roaw/pkg/types"
 )
 
 func RegisterHandler(e *echo.Echo, path string) {
@@ -16,11 +21,27 @@ func RegisterHandler(e *echo.Echo, path string) {
 }
 
 func UsersListHandler(c echo.Context) error {
-	return c.JSON(http.StatusOK, []map[string]any{{"id": "666", "username": "tbd"}})
+	u, err := db.ListAllUsers(config.GetConfigs().Db)
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, u)
 }
 
 func UsersCreateHandler(c echo.Context) error {
-	return c.JSON(http.StatusCreated, map[string]any{"id": "666", "username": "tbd"})
+	now := time.Now()
+	u := types.User{}
+	c.Bind(&u)
+	u.ID = uuid.NewString()
+	u.CreatedAt = now
+	u.UpdatedAt = now
+
+	err := db.UserCreate(config.GetConfigs().Db, &u)
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusCreated, u)
 }
 
 func UsersReadHandler(c echo.Context) error {

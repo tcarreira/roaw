@@ -27,7 +27,8 @@ func main() {
 			Commit:  commit,
 			DateStr: dateStr,
 		},
-		Db: config.NewDB("sqlite", ":memory:"),
+		// Db: config.NewDB("postgres", "postgres://roawuser:roawpass@localhost:5432/roaw?sslmode=disable"),
+		Db: config.NewDB("sqlite", "db.sqlite"),
 	})
 
 	flagVersion := flag.Bool("version", false, "Print version information and quit")
