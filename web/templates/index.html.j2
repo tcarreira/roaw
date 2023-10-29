@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+{{ template "head.html" }}
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" title="ROAW - Run Once a Week" href="/"><img
+                title="Icon made by Freepik from www.flaticon.com" src="/assets/images/favicon.ico">&nbsp;ROAW</a>
+        <div class="navbar-nav mr-auto"></div>
+
+
+        <a href="/auth/logout"><button class="btn btn-outline-secondary my-2 my-sm-0"> Logout</button></a>
+    </nav>
+
+    <div class="container-lg">
+        <div class="row" id="flash">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+
+        <div class="row mx-0 pt-4">
+            <h4>Run Once a Week</h4>
+            <div class="ml-auto mr-0">
+
+                <a class="btn btn-outline-primary float-right"
+                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/activities/">My Activities</a>
+
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-sm-12 col-md-4">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light text-center">
+                        <th colspan=4>Total Distance (Km)</th>
+                    </thead>
+                    <tbody>
+
+                        <tr class="table-warning">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/"
+                                    style="display: block;">525.26</a></td>
+                        </tr>
+
+                        <tr class="table-secondary">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">#2</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">Another
+                                    ONE</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/"
+                                    style="display: block;">500.78</a></td>
+                        </tr>
+
+                        <tr class="table-danger">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#3</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/"
+                                    style="display: block;">433.32</a></td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
+                                    style="display: block;">122.77</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light text-center">
+                        <th colspan=4>Activity Count</th>
+                    </thead>
+                    <tbody>
+
+                        <tr class="table-warning">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">91</a>
+                            </td>
+                        </tr>
+
+                        <tr class="table-secondary">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#2</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">60</a>
+                            </td>
+                        </tr>
+
+                        <tr class="table-danger">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">#3</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">Another
+                                    ONE</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">48</a>
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">21</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light text-center">
+                        <th colspan=4>Total Time</th>
+                    </thead>
+                    <tbody>
+
+                        <tr class="table-warning"
+                            onclick="window.location='/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/';"
+                            style="cursor: pointer;">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">2d
+                                    07h36m</a></td>
+                        </tr>
+
+                        <tr class="table-secondary"
+                            onclick="window.location='/users/10430211-b273-4409-bd41-6f1dcd0bc03a/';"
+                            style="cursor: pointer;">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#2</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">2d
+                                    07h24m</a></td>
+                        </tr>
+
+                        <tr class="table-danger"
+                            onclick="window.location='/users/a7386b67-1163-419a-8883-79a1c169a8c9/';"
+                            style="cursor: pointer;">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">#3</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">Another
+                                    ONE</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/a7386b67-1163-419a-8883-79a1c169a8c9/" style="display: block;">2d
+                                    04h34m</a></td>
+                        </tr>
+
+                        <tr class="" onclick="window.location='/users/05c244ab-6797-419f-bf63-d8126a07a082/';"
+                            style="cursor: pointer;">
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
+                            </td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                            <td class="align-middle text-center"><a class="btn btn-sm"
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
+                                    style="display: block;">15h57m</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <nav>
+            <div class="nav nav-tabs small" id="nav-tab" role="tab">
+                <a class="nav-item nav-link active" id="nav-cumulative-tab" data-toggle="tab" href="#nav-cumulative"
+                    role="tab" aria-controls="nav-cumulative" aria-selected="true">Cumulative</a>
+                <a class="nav-item nav-link" id="nav-weekly-tab" data-toggle="tab" href="#nav-weekly" role="tab"
+                    aria-controls="nav-weekly" aria-selected="false">Weekly</a>
+                <a class="nav-item nav-link" id="nav-other-top-tab" data-toggle="tab" href="#nav-other-top" role="tab"
+                    aria-controls="nav-other-top" aria-selected="false">Other Tops</a>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-cumulative" role="tabpanel"
+                aria-labelledby="nav-cumulative-tab">
+                <div class="row p-3">
+                    <div class="col-12">
+                        <canvas id="cumulative-distance-chart"></canvas>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-12">
+                        <canvas id="cumulative-counts-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-weekly" role="tabpanel" aria-labelledby="nav-weekly-tab">
+                <div class="row p-3">
+                    <div class="col-12">
+                        <canvas id="distance-chart"></canvas>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-12">
+                        <canvas id="counts-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-other-top" role="tabpanel" aria-labelledby="nav-other-top-tab">
+                <div class="d-flex justify-content-center">
+                    <div id="nav-other-top-spinner" class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+
+                <div id="other-tops-content"></div>
+            </div>
+        </div>
+
+
+
+        <script src="/assets/js/color-hash.js" type="text/javascript"></script>
+        <script src="/assets/js/dashboard.js" type="text/javascript"></script>
+
+    </div>
+
+</body>
+
+</html>

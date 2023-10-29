@@ -45,8 +45,10 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	website.RegisterRoutes(e, "")
 	api.RegisterRoutes(e, "/api")
+
+	e.Renderer = website.NewRenderer()
+	website.RegisterRoutes(e, "")
 
 	port := os.Getenv("PORT")
 	if port == "" {
