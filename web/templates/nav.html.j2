@@ -1,0 +1,12 @@
+{{ define "nav" -}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/"><img title="Icon made by Freepik from www.flaticon.com" src="/assets/images/favicon.ico">&nbsp;ROAW</a>
+  <div class="navbar-nav mr-auto"></div>
+
+{{ if .IsLoggedIn -}}
+  <a href="/auth/logout"><button class="btn btn-outline-secondary my-2 my-sm-0"> Logout</button></a>
+{{- else -}}
+  <a href="/auth/strava"><button class="btn btn-outline-primary my-2 my-sm-0">Strava Login</button></a>
+{{- end }}
+</nav>
+{{- end }}

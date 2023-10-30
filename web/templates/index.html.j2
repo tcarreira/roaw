@@ -2,15 +2,7 @@
 <html>
 {{ template "head.html" }}
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" title="ROAW - Run Once a Week" href="/"><img
-                title="Icon made by Freepik from www.flaticon.com" src="/assets/images/favicon.ico">&nbsp;ROAW</a>
-        <div class="navbar-nav mr-auto"></div>
-
-
-        <a href="/auth/logout"><button class="btn btn-outline-secondary my-2 my-sm-0"> Logout</button></a>
-    </nav>
-
+    {{ template "nav" . }}
     <div class="container-lg">
         <div class="row" id="flash">
             <div class="col-md-12">
