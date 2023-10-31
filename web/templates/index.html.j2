@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
-{{ template "head.html" }}
+{{ template "_head.html" }}
+
 <body>
-    {{ template "nav" . }}
+    {{ template "_nav.html" . }}
     <div class="container-lg">
-        <div class="row" id="flash">
-            <div class="col-md-12">
-
-            </div>
-        </div>
-
+        {{ template "_flash.html" }}
         <div class="row mx-0 pt-4">
             <h4>Run Once a Week</h4>
             <div class="ml-auto mr-0">
-
                 <a class="btn btn-outline-primary float-right"
-                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/activities/">My Activities</a>
-
+                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/activities/">
+                    My Activities
+                </a>
             </div>
         </div>
-
         <div class="row pt-3">
             <div class="col-sm-12 col-md-4">
                 <table class="table table-bordered table-striped">
@@ -33,7 +28,8 @@
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name
+                                    1</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/"
                                     style="display: block;">525.26</a></td>
@@ -56,7 +52,8 @@
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#3</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister
+                                    MMM</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/"
                                     style="display: block;">433.32</a></td>
@@ -67,7 +64,8 @@
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
+                                    style="display: block;">Wahhçoo</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
                                     style="display: block;">122.77</a></td>
@@ -89,7 +87,8 @@
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name
+                                    1</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">91</a>
                             </td>
@@ -100,7 +99,8 @@
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#2</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister
+                                    MMM</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">60</a>
                             </td>
@@ -123,7 +123,8 @@
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
+                                    style="display: block;">Wahhçoo</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">21</a>
                             </td>
@@ -147,7 +148,8 @@
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">#1</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name 1</a></td>
+                                    href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">Name
+                                    1</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/7d8de7d7-28d8-490a-b9cf-40852c4b5944/" style="display: block;">2d
                                     07h36m</a></td>
@@ -160,7 +162,8 @@
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">#2</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister MMM</a></td>
+                                    href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">Mister
+                                    MMM</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/10430211-b273-4409-bd41-6f1dcd0bc03a/" style="display: block;">2d
                                     07h24m</a></td>
@@ -186,7 +189,8 @@
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">#4</a>
                             </td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
-                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/" style="display: block;">Wahhçoo</a></td>
+                                    href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
+                                    style="display: block;">Wahhçoo</a></td>
                             <td class="align-middle text-center"><a class="btn btn-sm"
                                     href="/users/05c244ab-6797-419f-bf63-d8126a07a082/"
                                     style="display: block;">15h57m</a></td>
@@ -252,7 +256,6 @@
         <script src="/assets/js/dashboard.js" type="text/javascript"></script>
 
     </div>
-
 </body>
 
 </html>
