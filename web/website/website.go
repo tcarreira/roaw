@@ -1,20 +1,21 @@
 package website
 
 import (
+	"io/fs"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/tcarreira/roaw/config"
 )
 
-func RegisterRoutes(e *echo.Echo, path string) {
-	HandleGroupWithConfigs(e, path, config.GetConfigs())
+func RegisterRoutes(e *echo.Echo, path string, embedFS fs.FS) {
+	HandleGroupWithConfigs(e, path, embedFS, config.GetConfigs())
 }
 
-func HandleGroupWithConfigs(e *echo.Echo, path string, conf *config.Config) {
+func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf *config.Config) {
 	g := e.Group(path)
 
-	g.Static("/assets", "assets")
+	g.StaticFS("", embedFS)
 
 	state := BuildState()
 	g.GET("/", func(c echo.Context) error {

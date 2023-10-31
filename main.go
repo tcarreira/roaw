@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"flag"
 	"fmt"
 	"os"
@@ -13,6 +14,9 @@ import (
 )
 
 var (
+	//go:embed assets/* web/templates/*
+	embedFS embed.FS
+
 	version = "dev"
 	commit  = ""
 	dateStr = ""
@@ -31,13 +35,6 @@ func main() {
 		Db: config.NewDB("sqlite", "db.sqlite"),
 	})
 
-	flagVersion := flag.Bool("version", false, "Print version information and quit")
-	flag.Parse()
-	if *flagVersion {
-		fmt.Println(config.GetConfigs().GetVersionString())
-		os.Exit(0)
-	}
-
 	e := echo.New()
 	e.HideBanner = true
 
@@ -47,8 +44,15 @@ func main() {
 
 	api.RegisterRoutes(e, "/api")
 
-	e.Renderer = website.NewRenderer()
-	website.RegisterRoutes(e, "")
+	e.Renderer = website.NewRenderer(embedFS)
+	website.RegisterRoutes(e, "", embedFS)
+
+	flagVersion := flag.Bool("version", false, "Print version information and quit")
+	flag.Parse()
+	if *flagVersion {
+		fmt.Println(config.GetConfigs().GetVersionString())
+		os.Exit(0)
+	}
 
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -3,10 +3,9 @@ package website
 import (
 	"html/template"
 	"io"
-	"path/filepath"
+	"io/fs"
 
 	"github.com/labstack/echo/v4"
-	"github.com/tcarreira/roaw/config"
 )
 
 // TemplateRenderer is a custom html/template renderer for Echo framework
@@ -25,11 +24,8 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c 
 	return t.Templates.ExecuteTemplate(w, name, data)
 }
 
-func NewRenderer() *TemplateRenderer {
-	t := TemplateRenderer{
-		Templates: template.Must(
-			template.ParseGlob(filepath.Join(config.WebsiteTemplatesPath(), "*.html.j2")),
-		),
+func NewRenderer(embedFS fs.FS) *TemplateRenderer {
+	return &TemplateRenderer{
+		Templates: template.Must(template.ParseFS(embedFS, "web/templates/*.html.j2")),
 	}
-	return &t
 }
