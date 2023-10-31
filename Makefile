@@ -27,7 +27,7 @@ run-livereload: ## Run server with live-reloading
 ifeq (, $(shell which air 2>/dev/null))
 	go install github.com/cosmtrek/air@latest
 endif
-	air
+	air -build.include_ext "go,j2,html,js,css"
 
 ## Build:
 build: ## Build your project and put the output binary in build/
