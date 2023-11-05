@@ -2,8 +2,6 @@ package config
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -48,26 +46,4 @@ func (c *Config) GetVersionString() string {
 		return fmt.Sprintf("roaw version: %s", c.Version.Version)
 	}
 	return fmt.Sprintf("roaw version: %s (%s - %s)", c.Version.Version, c.Version.Commit, c.Version.DateStr)
-}
-
-func WebsiteTemplatesPath() string {
-	p := os.Getenv("ROAW_TEMPLATES_PATH")
-	if p != "" {
-		return p
-	}
-
-	wd, _ := os.Getwd()
-	tryPaths := []string{
-		"/app/templates",
-		filepath.Join(wd, "web", "templates"),
-		filepath.Join(wd, "..", "web", "templates"),
-	}
-
-	for _, p := range tryPaths {
-		if stat, err := os.Stat(p); err == nil && stat.IsDir() {
-			return p
-		}
-	}
-
-	panic("Could not find website html templates")
 }
