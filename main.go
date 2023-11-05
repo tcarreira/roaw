@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gorilla/sessions"
+	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/tcarreira/roaw/api"
@@ -42,11 +44,11 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.SecureWithConfig(middleware.SecureConfig{
-		XSSProtection:         "1; mode=block",
-		XFrameOptions:         "SAMEORIGIN",
-		HSTSMaxAge:            3600,
-		ContentSecurityPolicy: "default-src 'self'",
+		XSSProtection: "1; mode=block",
+		XFrameOptions: "SAMEORIGIN",
+		HSTSMaxAge:    3600,
 	}))
+	e.Use(session.Middleware(sessions.NewCookieStore(config.SessionSecret())))
 
 	api.RegisterRoutes(e, "/api")
 

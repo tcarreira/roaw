@@ -17,15 +17,16 @@ func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf *conf
 
 	g.StaticFS("", embedFS)
 
-	state := BuildState()
 	g.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html.j2", state)
+		return c.Render(http.StatusOK, "index.html.j2", BuildState(c))
 	})
 	g.GET("/index.html", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html.j2", state)
+		return c.Render(http.StatusOK, "index.html.j2", BuildState(c))
 	})
 	g.GET("/version", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "version.html.j2", map[string]string{"version": conf.GetVersionString()})
 	})
 
+	g.GET("/auth/strava", AuthCallback)
+	g.GET("/auth/logout", AuthLogout)
 }

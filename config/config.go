@@ -2,7 +2,9 @@ package config
 
 import (
 	"fmt"
+	"os"
 
+	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -46,4 +48,13 @@ func (c *Config) GetVersionString() string {
 		return fmt.Sprintf("roaw version: %s", c.Version.Version)
 	}
 	return fmt.Sprintf("roaw version: %s (%s - %s)", c.Version.Version, c.Version.Commit, c.Version.DateStr)
+}
+
+func SessionSecret() []byte {
+	secret := os.Getenv("ROAW_SESSION_SECRET")
+	if secret == "" {
+		u := uuid.New()
+		return u[:]
+	}
+	return []byte(secret)
 }
