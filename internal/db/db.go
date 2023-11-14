@@ -8,9 +8,8 @@ import (
 )
 
 var (
-	table        = "roaw_users"
 	sqliteSchema = `
-CREATE TABLE IF NOT EXISTS ` + table + ` (
+CREATE TABLE IF NOT EXISTS roaw_user (
 	id TEXT PRIMARY KEY,
 	name TEXT,
 	email TEXT UNIQUE,
@@ -24,9 +23,9 @@ CREATE TABLE IF NOT EXISTS ` + table + ` (
 );
 `
 	postgresSchema = `
-DROP TABLE IF EXISTS ` + table + `;
+DROP TABLE IF EXISTS roaw_user;
 
-CREATE TABLE IF NOT EXISTS ` + table + ` (
+CREATE TABLE IF NOT EXISTS roaw_user (
 	id VARCHAR(255),
 	name VARCHAR(255),
 	email VARCHAR(255),
@@ -39,10 +38,10 @@ CREATE TABLE IF NOT EXISTS ` + table + ` (
 	updated_at TIMESTAMP
 );
 
-ALTER TABLE ONLY ` + table + `
+ALTER TABLE ONLY roaw_user
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 CREATE UNIQUE INDEX users_emails_unique
-    ON ` + table + ` USING btree (email);
+    ON roaw_user USING btree (email);
 
 `
 )
