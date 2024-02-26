@@ -1,4 +1,5 @@
 build/
 coverage/
 tmp/
+default.db.sqlite
 db.sqlite

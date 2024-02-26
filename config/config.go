@@ -26,7 +26,7 @@ func SetupGlobalConfig(c Config) {
 }
 
 func defaultGlobalConfig() Config {
-	db, err := sqlx.Connect("sqlite", ":memory")
+	db, err := sqlx.Connect("sqlite", "default.db.sqlite")
 	if err != nil {
 		panic("cannot create a sqlite :memory")
 	}
