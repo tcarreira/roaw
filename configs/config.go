@@ -16,6 +16,7 @@ type Version struct {
 
 type Config struct {
 	Version Version
+	Args    []string
 	Getenv  func(string) string
 	Stdin   io.Reader
 	Stdout  io.Writer
@@ -27,14 +28,13 @@ func NewConfig(
 	version Version,
 	args []string,
 	getenv func(string) string,
-	stdin io.Reader,
 	stdout,
 	stderr io.Writer,
 ) Config {
 	return Config{
 		Version: version,
+		Args:    args,
 		Getenv:  getenv,
-		Stdin:   stdin,
 		Stdout:  stdout,
 		Stderr:  stderr,
 		Db:      NewDB("sqlite", "db.sqlite"),

@@ -24,6 +24,12 @@ var (
 	dateStr = ""
 )
 
+type FlagError struct {
+	Msg string
+}
+
+func (e *FlagError) Error() string { return e.Msg }
+
 func newEchoServer(confs configs.Config) *echo.Echo {
 	e := echo.New()
 	e.HideBanner = true
@@ -43,6 +49,31 @@ func newEchoServer(confs configs.Config) *echo.Echo {
 	return e
 }
 
+func runServer(conf configs.Config) error {
+	e := newEchoServer(conf)
+	api.RegisterRoutes(e, conf, "/api")
+
+	e.Renderer = website.NewRenderer(embedFS)
+	website.RegisterRoutes(e, conf, "", embedFS)
+
+	flagSet := flag.NewFlagSet("", flag.ContinueOnError)
+	flagVersion := flagSet.Bool("version", false, "Print version information and quit")
+	if err := flagSet.Parse(conf.Args[1:]); err != nil {
+		return &FlagError{err.Error()}
+	}
+	if *flagVersion {
+		fmt.Println(conf.GetVersionString())
+		return nil
+	}
+
+	port := conf.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	return e.Start(":" + port)
+
+}
+
 func main() {
 	fmt.Println("Starting Roaw - Run Once A Week")
 
@@ -54,28 +85,13 @@ func main() {
 		},
 		os.Args,
 		os.Getenv,
-		os.Stdin,
 		os.Stdout,
 		os.Stderr,
 	)
 
-	e := newEchoServer(conf)
-	api.RegisterRoutes(e, conf, "/api")
-
-	e.Renderer = website.NewRenderer(embedFS)
-	website.RegisterRoutes(e, conf, "", embedFS)
-
-	flagVersion := flag.Bool("version", false, "Print version information and quit")
-	flag.Parse()
-	if *flagVersion {
-		fmt.Println(conf.GetVersionString())
-		os.Exit(0)
+	if err := runServer(conf); err != nil {
+		if _, ok := err.(*FlagError); !ok {
+			fmt.Printf(":: %v\n", err)
+		}
 	}
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-	e.Logger.Fatal(e.Start(":" + port))
-
 }
