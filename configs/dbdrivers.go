@@ -1,4 +1,4 @@
-package config
+package configs
 
 import (
 	_ "github.com/lib/pq"

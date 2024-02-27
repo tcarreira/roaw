@@ -1,14 +1,12 @@
-package config
+package configs
 
 import (
 	"fmt"
-	"os"
+	"io"
 
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 )
-
-var gConfig *Config
 
 type Version struct {
 	Version string
@@ -18,29 +16,29 @@ type Version struct {
 
 type Config struct {
 	Version Version
+	Getenv  func(string) string
+	Stdin   io.Reader
+	Stdout  io.Writer
+	Stderr  io.Writer
 	Db      *sqlx.DB
 }
 
-func SetupGlobalConfig(c Config) {
-	gConfig = &c
-}
-
-func defaultGlobalConfig() Config {
-	db, err := sqlx.Connect("sqlite", "default.db.sqlite")
-	if err != nil {
-		panic("cannot create a sqlite :memory")
-	}
+func NewConfig(
+	version Version,
+	args []string,
+	getenv func(string) string,
+	stdin io.Reader,
+	stdout,
+	stderr io.Writer,
+) Config {
 	return Config{
-		Version: Version{"test", "", ""},
-		Db:      db,
+		Version: version,
+		Getenv:  getenv,
+		Stdin:   stdin,
+		Stdout:  stdout,
+		Stderr:  stderr,
+		Db:      NewDB("sqlite", "db.sqlite"),
 	}
-}
-
-func GetConfigs() *Config {
-	if gConfig == nil {
-		SetupGlobalConfig(defaultGlobalConfig())
-	}
-	return gConfig
 }
 
 func (c *Config) GetVersionString() string {
@@ -50,8 +48,8 @@ func (c *Config) GetVersionString() string {
 	return fmt.Sprintf("roaw version: %s (%s - %s)", c.Version.Version, c.Version.Commit, c.Version.DateStr)
 }
 
-func SessionSecret() []byte {
-	secret := os.Getenv("ROAW_SESSION_SECRET")
+func (c *Config) SessionSecret() []byte {
+	secret := c.Getenv("ROAW_SESSION_SECRET")
 	if secret == "" {
 		u := uuid.New()
 		return u[:]

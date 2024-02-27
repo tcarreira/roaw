@@ -5,14 +5,14 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/tcarreira/roaw/config"
+	"github.com/tcarreira/roaw/configs"
 )
 
-func RegisterRoutes(e *echo.Echo, path string, embedFS fs.FS) {
-	HandleGroupWithConfigs(e, path, embedFS, config.GetConfigs())
+func RegisterRoutes(e *echo.Echo, conf configs.Config, path string, embedFS fs.FS) {
+	HandleGroupWithConfigs(e, path, embedFS, conf)
 }
 
-func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf *config.Config) {
+func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf configs.Config) {
 	g := e.Group(path)
 
 	g.StaticFS("", embedFS)
