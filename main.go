@@ -62,7 +62,7 @@ func runServer(conf configs.Config) error {
 		return &FlagError{err.Error()}
 	}
 	if *flagVersion {
-		fmt.Println(conf.GetVersionString())
+		fmt.Fprintln(conf.Stdout, conf.GetVersionString())
 		return nil
 	}
 
