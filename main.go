@@ -11,6 +11,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/tcarreira/roaw/api"
+	"github.com/tcarreira/roaw/api/users"
 	"github.com/tcarreira/roaw/configs"
 	"github.com/tcarreira/roaw/web/website"
 )
@@ -63,7 +64,9 @@ func runServer(conf configs.Config) error {
 
 	// Setup routes
 	e := newEchoServer(conf)
-	api.RegisterRoutes(e, conf, "/api")
+	api.RegisterHealthcheck(e, conf, "/api/healthcheck")
+	api.RegisterDBMigrate(e, conf, "/api/admin/db/migrate")
+	users.RegisterHandler(e, conf, "/api/users")
 
 	e.Renderer = website.NewRenderer(embedFS)
 	website.RegisterRoutes(e, conf, "", embedFS)
