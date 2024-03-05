@@ -50,12 +50,7 @@ func newEchoServer(confs configs.Config) *echo.Echo {
 }
 
 func runServer(conf configs.Config) error {
-	e := newEchoServer(conf)
-	api.RegisterRoutes(e, conf, "/api")
-
-	e.Renderer = website.NewRenderer(embedFS)
-	website.RegisterRoutes(e, conf, "", embedFS)
-
+	// Handle command line flags
 	flagSet := flag.NewFlagSet("", flag.ContinueOnError)
 	flagVersion := flagSet.Bool("version", false, "Print version information and quit")
 	if err := flagSet.Parse(conf.Args[1:]); err != nil {
@@ -66,6 +61,14 @@ func runServer(conf configs.Config) error {
 		return nil
 	}
 
+	// Setup routes
+	e := newEchoServer(conf)
+	api.RegisterRoutes(e, conf, "/api")
+
+	e.Renderer = website.NewRenderer(embedFS)
+	website.RegisterRoutes(e, conf, "", embedFS)
+
+	// Start http server
 	port := conf.Getenv("PORT")
 	if port == "" {
 		port = "8080"
