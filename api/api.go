@@ -8,14 +8,14 @@ import (
 	"github.com/tcarreira/roaw/internal/db"
 )
 
-func RegisterHealthcheck(e *echo.Echo, conf configs.Config, path string) {
-	e.GET(path, func(c echo.Context) error {
+func RegisterHealthcheck(e *echo.Echo, conf configs.Config, method, path string) {
+	e.Add(method, path, func(c echo.Context) error {
 		return c.HTML(http.StatusOK, "ok")
 	})
 }
 
-func RegisterDBMigrate(e *echo.Echo, conf configs.Config, path string) {
-	e.POST("/admin/db/migrate", func(c echo.Context) error {
+func RegisterDBMigrate(e *echo.Echo, conf configs.Config, method, path string) {
+	e.Add(method, path, func(c echo.Context) error {
 		return db.CreateSchema(conf.Db)
 	})
 }

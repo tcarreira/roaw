@@ -4,6 +4,7 @@ import (
 	"embed"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/gorilla/sessions"
@@ -64,9 +65,9 @@ func runServer(conf configs.Config) error {
 
 	// Setup routes
 	e := newEchoServer(conf)
-	api.RegisterHealthcheck(e, conf, "/api/healthcheck")
-	api.RegisterDBMigrate(e, conf, "/api/admin/db/migrate")
-	users.RegisterHandler(e, conf, "/api/users")
+	api.RegisterHealthcheck(e, conf, http.MethodGet, "/api/healthcheck")
+	api.RegisterDBMigrate(e, conf, http.MethodPost, "/api/admin/db/migrate")
+	users.RegisterHandler(e, conf, "/api/users/")
 
 	e.Renderer = website.NewRenderer(embedFS)
 	website.RegisterRoutes(e, conf, "", embedFS)
