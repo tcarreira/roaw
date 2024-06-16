@@ -26,6 +26,12 @@ func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf confi
 	g.GET("/index.html", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "index.html.j2", BuildState(c))
 	})
+	g.GET("/redirect", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "redirect.html.j2", map[string]string{
+			"scheme": c.Scheme(),
+			"host":   c.Request().Host,
+		})
+	})
 	g.GET("/version", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "version.html.j2", map[string]string{"version": conf.GetVersionString()})
 	})
