@@ -15,13 +15,14 @@ type Version struct {
 }
 
 type Config struct {
-	Version Version
-	Args    []string
-	Getenv  func(string) string
-	Stdin   io.Reader
-	Stdout  io.Writer
-	Stderr  io.Writer
-	Db      *sqlx.DB
+	Version    Version
+	Args       []string
+	Getenv     func(string) string
+	Stdin      io.Reader
+	Stdout     io.Writer
+	Stderr     io.Writer
+	Db         *sqlx.DB
+	ListenPort uint
 }
 
 func NewConfig(

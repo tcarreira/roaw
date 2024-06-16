@@ -8,6 +8,8 @@ VERSION ?= $(shell git describe --tags --dirty --match='v*' 2> /dev/null || echo
 COMMIT  ?= $(shell git rev-parse --short HEAD 2> /dev/null || echo "")
 DATEUTC ?= $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 FILES   ?= $(shell find . -type f -name '*.go')
+PORT    ?= 8080
+export PORT
 
 GREEN  := $(shell tput -Txterm setaf 2 2>/dev/null)
 YELLOW := $(shell tput -Txterm setaf 3 2>/dev/null)
