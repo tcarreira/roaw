@@ -20,6 +20,9 @@ func HandleGroupWithConfigs(e *echo.Echo, path string, embedFS fs.FS, conf confi
 	g.GET("/", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "index.html.j2", BuildState(c))
 	})
+	e.GET("/healthcheck", func(c echo.Context) error {
+		return c.HTML(http.StatusOK, "ok")
+	})
 	g.GET("/index.html", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "index.html.j2", BuildState(c))
 	})
